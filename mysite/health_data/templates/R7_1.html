@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+:root {
+  --gradient: linear-gradient(-45deg, #EE7752, #E73C7E,#23A6D5,#23A6D8);
+
+}
+
+body {
+  font-family: basic-sans, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.125em;
+  line-height: 1.6;
+  color: #333;
+  background: #ddd;
+  background-size: 300%;
+  background-image: var(--gradient);
+  animation: bg-animation 25s infinite;
+}
+
+@keyframes bg-animation {
+  0% {background-position: left}
+  50% {background-position: right}
+  100% {background-position: left}
+}
+
+
+h1{
+font-size: 2rem;
+text-transform : uppercase; 
+letter-spacing: 3px;
+border: 3px solid #fff; 
+position: absolute; 
+top: 10%;
+left: 50%
+transform: translate(-50%,-50%); 
+padding:3rem 5rem; 
+box-sizing: border-box; 
+color: white; 
+text-align:center
+}
+<!---------------------------------------------->
+*{
+  box-sizing:border-box
+}
+#menu_dynamique ul {
+    width:200px;
+    list-style:none;
+    padding:0px;
+}
+
+#menu_dynamique ul li {
+    text-align:center;
+    border: 1px solid #fff ;
+    padding:15px 15px;
+    max-height: 55px;
+}
+
+#menu_dynamique ul li a{
+  text-decoration:none;
+  color:black;
+  text-transform:uppercase;
+  
+}
+
+#menu_dynamique ul li:hover {
+    background: #FCEDED;
+    -moz-transition: all .8s; 
+    -webkit-transition: all .8s; 
+    -o-transition: all .8s; 
+    transition: all .8s;
+}
+
+
+#menu_dynamique ul > li > ul{
+  opacity:0;   
+  display:none;
+  z-index:999;
+  outline: none;
+  margin-top:-35px;
+  
+}
+
+#menu_dynamique ul li:hover > ul {
+  display: block; 
+  position:relative;
+  opacity:1;
+  margin-left:185px
+}
+
+
+section
+{
+    margin-left: 170px;
+    border: 1px solid blue;
+}
+h4{
+color: white;
+}
+#wrapper {
+  display: flex;
+  }
+
+</style>
+ </head>
+	<body>
+		<h1 style="color:#f7f7f7 text-align:center">Utilisateur Analyste / Décisionnaire ! </h1>
+		<!--<h3 style="color:#f7f7f7">Veuillez choisir une requête</h3>-->
+		 
+		<div id="wrapper" style="margin-top:12%">
+			<div  style ="margin-right: 50px; margin-left: 70px; margin-top: 100px;">	  
+				<div id="menu_dynamique">
+					<ul id="menu-navigation-principale" class="menu">
+						<li id="menu-item-2800" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2800"style="border-radius: 40px 40px 40px 40px; margin:4px"><a title="Profil" href="#" style ="color:#f7f7f7">Profil</a>
+							<ul>
+								<li style="border-radius: 40px 40px 40px 40px; margin:4px"><a title="Standard" href="{% url 'standard' %}" style ="color:#f7f7f7">Standard</a></li>
+								<li style="border-radius: 40px 40px 40px 40px; margin:4px"><a title="Administrateur" href="{% url 'adminview' %}" style ="color:#f7f7f7">Administrateur</a></li>
+							</ul>
+						</li>
+						<li id="menu-item-17" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-17"style="border-radius: 40px 40px 40px 40px; margin:4px"><a title="R5" href="{% url 'R5' %}" style ="color:#f7f7f7">Requête 5</a></li>
+						<li id="menu-item-1065" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1065"style="border-radius: 40px 40px 40px 40px; margin:4px"><a title="R6" href="{% url 'R6' %}" style ="color:#f7f7f7" >Requête 6</a></li>
+						<li id="menu-item-1065" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1065"style="border-radius: 40px 40px 40px 40px; margin:4px"><a title="R7" href="{% url 'R7' %}" style ="color:#f7f7f7">Requête 7</a></li>
+						<li id="menu-item-17" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-17" style="border-radius: 40px 40px 40px 40px; margin:4px"><a title="R8" href="{% url 'R8' %}"style ="color:#f7f7f7">Requête 8</a></li>
+					</ul>
+				</div>
+			</div>			 
+			<div style ="margin-left:200px "> 
+				<div style ="margin-top: 120px; ">
+					<h4> 7) Pour chaque année, de 1950 à 2050, combien de pays ont un taux de mortalité des enfants supérieur à un taux à définir ?</h3>
+				</div>
+				<div style ="color:#f7f7f7">
+					<h5> Vous avez choisi un taux de 80 : </h5>
+				</div>
+				<div> 
+					{% if chart %}
+					<img src="data:image/png;base64, {{chart|safe}}">
+					{% endif %}
+				</div>
+				<div style ="color:#f7f7f7">
+					<h3> année       Nombre de pays        Pays </h3>
+					{% for d in data7 %}
+					<p>{{d.result}}</p>
+					{%endfor%}
+				</div>
+			</div>
+		</div>	
+		 <hr>	
+ </body>   
+</html>

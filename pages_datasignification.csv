@@ -1,0 +1,18 @@
+﻿id;Variable;Signification
+0;Gender;Person gender
+1;Age;Person age
+2;Height;Person height
+3;Weight;Person weight
+4;family_history_with_overweight;Obesity history in the person's family
+5;FAVC;Frequent consumption of high caloric food
+6;FCVC;Frequency of consumption of vegetables
+7;NCP;Number of main meals
+8;CAEC;Consumption of food between meals
+9;SMOKE;Is the peson smoking
+10;CH2O;Consumption of water daily
+11;CALC;Consumption of alcohol
+12;SCC;Calories consumption monitoring
+13;FAF;Physical activity frequency
+14;TUE;Time using technology devices
+15;MTRANS;Transportation used
+16;NObeyesdad;Wheight status
